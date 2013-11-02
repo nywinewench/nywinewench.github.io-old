@@ -15,25 +15,82 @@
   
 
   <head>
-    <title>Entries 1-4 of 4 | Stellenbauchery by Julia Burke</title>
+    <title>Entries 1-4 of 4 | Stellenbauchery</title>
 
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
     <meta name='viewport' content='width=device-width'>
-    <meta name='description' content="The South African wine blog and freelance writing site of Julia Burke.">
+    <meta name='description' content="">
 
     <link rel='icon' type='image/png' href='/images/favicon.png'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/normalize.css'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/screen.css'>
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ruthie'>
 
-    <meta property='og:title' content="Entries 1-4 of 4 | Stellenbauchery by Julia Burke">
-    <meta property='og:site_name' content="Stellenbauchery by Julia Burke">
-    <meta property='og:url' content="http://stellenbauchery.com/blog/index.html">
-    <meta property='og:description' content="The South African wine blog and freelance writing site of Julia Burke.">
+    <meta property='og:title' content="Entries 1-4 of 4 | Stellenbauchery">
+    <meta property='og:site_name' content="Stellenbauchery">
+    <meta property='og:url' content="http:///blog/index.html">
+    <meta property='og:description' content="">
     <meta property='og:type' content="blog">
 
-    
+    {% include pagination/title.html %}
+{% include header.html custom_title=pagination_title %}
+
+  <div class='large_column'>
+    <div class='container bottom_border'>
+      <h3 class='left title'>{{ pagination_title }}</h3>
+
+      <h3 class='right title'>
+        {% if paginator.previous_page %}<a href='{{ paginator.previous_page_path }}'>&#8592; Previous Entries</a>{% endif %}
+        {% if paginator.previous_page and paginator.next_page %} | {% endif %}
+        {% if paginator.next_page %}<a href='{{ paginator.next_page_path }}'>Next Entries &#8594;</a>{% endif %}
+      </h3>
+    </div><!--pagination_top-->
+
+    {% for entry in paginator.posts %}
+      <article class='bottom_border'>
+
+        <h1><a href='{{ entry.url }}'>{{ entry.title }}</a></h1>
+        <h5>{% include entry/timestamp.html %}</h5>
+        {{ entry.excerpt | remove_first: '</p>' | append: ' <a href="' | append: entry.url | append: '">Read the full article.</a></p>' }}
+        {% include entry/tags.html entry=entry %}
+
+      </article>
+    {% endfor %}
+
+    <div class='container'>
+      <h3 class='left'>{{ pagination_title }}</h3>
+
+      <h3 class='right'>
+        {% if paginator.previous_page %}<a href='{{ paginator.previous_page_path }}'>&#8592; Previous Entries</a>{% endif %}
+        {% if paginator.previous_page and paginator.next_page %} | {% endif %}
+        {% if paginator.next_page %}<a href='{{ paginator.next_page_path }}'>Next Entries &#8594;</a>{% endif %}
+      </h3>
+    </div><!--pagination_bottom-->
+  </div><!--large_column-->
+
+  <div class='small_column'>
+    <h3 class='title'>By <a href='/blog/categories.html'>Categories</a></h3>
+    <ul class='plain small bold no_bullets'>
+      {% for category_obj in site.categories limit:10 %}
+        {% assign category = category_obj[0] %}
+        {% assign category_id = category | normalize %}
+        <li><a class='no_border capitalize' href='/blog/categories.html#{{ category_id }}'>{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <h3>By <a href='/blog/tags.html'>Tags</a></h3>
+    <ul class='pills'>
+      {% for tag_obj in site.tags limit:10 %}
+        {% assign tag = tag_obj[0] %}
+        {% assign tag_id = tag | normalize %}
+        <li><a href='/blog/tags.html#{{ tag_id }}'>{{ tag }}</a></li>
+      {% endfor %}
+    </ul
+  </div><!--small_column-->
+
+{% include footer.html %}
+
   </head>
 
   <body lang='en'>

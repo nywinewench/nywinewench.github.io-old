@@ -6,25 +6,27 @@
   
 
   <head>
-    <title>Home | Stellenbauchery by Julia Burke</title>
+    <title>Home | Stellenbauchery</title>
 
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
     <meta name='viewport' content='width=device-width'>
-    <meta name='description' content="The South African wine blog and freelance writing site of Julia Burke.">
+    <meta name='description' content="">
 
     <link rel='icon' type='image/png' href='/images/favicon.png'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/normalize.css'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/screen.css'>
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ruthie'>
 
-    <meta property='og:title' content="Home | Stellenbauchery by Julia Burke">
-    <meta property='og:site_name' content="Stellenbauchery by Julia Burke">
-    <meta property='og:url' content="http://stellenbauchery.com/index.html">
-    <meta property='og:description' content="The South African wine blog and freelance writing site of Julia Burke.">
+    <meta property='og:title' content="Home | Stellenbauchery">
+    <meta property='og:site_name' content="Stellenbauchery">
+    <meta property='og:url' content="http:///index.html">
+    <meta property='og:description' content="">
     <meta property='og:type' content="blog">
 
-    
+    {% assign latest_entry = site.posts[0] %}
+{% include entry.html entry=latest_entry entry_content=latest_entry.content %}
+
   </head>
 
   <body lang='en'>
