@@ -6,57 +6,25 @@
   
 
   <head>
-    <title>Entries by Category | Stellenbauchery</title>
+    <title>Entries by Category | Stellenbauchery by Julia Burke</title>
 
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
     <meta name='viewport' content='width=device-width'>
-    <meta name='description' content="">
+    <meta name='description' content="The South African wine blog and freelance writing site of Julia Burke.">
 
     <link rel='icon' type='image/png' href='/images/favicon.png'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/normalize.css'>
     <link rel='stylesheet' type='text/css' href='/stylesheets/screen.css'>
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ruthie'>
 
-    <meta property='og:title' content="Entries by Category | Stellenbauchery">
-    <meta property='og:site_name' content="Stellenbauchery">
-    <meta property='og:url' content="http:///blog/categories.html">
-    <meta property='og:description' content="">
+    <meta property='og:title' content="Entries by Category | Stellenbauchery by Julia Burke">
+    <meta property='og:site_name' content="Stellenbauchery by Julia Burke">
+    <meta property='og:url' content="http://stellenbauchery.com/blog/categories.html">
+    <meta property='og:description' content="The South African wine blog and freelance writing site of Julia Burke.">
     <meta property='og:type' content="blog">
 
-    <div class='large_column'>
-  <h1 class='title'>Entries by Category</h1>
-
-  {% for category_obj in site.categories %}
-    {% assign category = category_obj[0] %}
-    {% assign category_id = category | normalize %}
-    <h3 class='capitalize bottom_border' id='{{ category_id }}'>{{ category }}</h3>
-
-    <table>
-      <tbody>
-        {% for entry in site.categories[category] %}
-          <tr>
-            <th class='smaller plain'>{{ entry.date | display_date }}</th>
-            <td><a class='no_border' href='{{ entry.url }}'>{{ entry.title }}</a></td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% endfor %}
-
-</div>
-
-<div class='small_column'>
-  <h3 class='title'>Categories</h3>
-  <ul class='plain small bold no_bullets'>
-    {% for category_obj in site.categories %}
-      {% assign category = category_obj[0] %}
-      {% assign category_id = category | normalize %}
-      <li><a class='no_border capitalize' href='#{{ category_id }}'>{{ category }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
-
+    
   </head>
 
   <body lang='en'>
